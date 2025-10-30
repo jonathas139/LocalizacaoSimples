@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "375017001289",
+    "project_id": "localizacaosimples",
+    "storage_bucket": "localizacaosimples.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375017001289:android:df8de07e079af642c98a98",
+        "android_client_info": {
+          "package_name": "com.example.localizacaosimples"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjLbFMXs2H4rVQvYFYB2jMav7MLUjkmvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
