@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardElevation="2dp"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="?attr/colorSurface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
                 android:text="Nome da Pessoa"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="#333333"/>
+                android:textColor="?attr/colorOnBackground"/>
 
             <TextView
                 android:id="@+id/emailTextView"
@@ -35,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:text="email@exemplo.com"
                 android:textSize="14sp"
-                android:textColor="#666666"
+                android:textColor="?attr/colorOnBackground"
+                android:alpha="0.7"
                 android:layout_marginTop="4dp"/>
 
         </LinearLayout>
@@ -44,7 +46,7 @@
             android:id="@+id/removeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="❌ Remover"
+            android:text="Remover"
             android:textSize="12sp"
             android:backgroundTint="#F44336"
             android:textColor="#FFFFFF"/>

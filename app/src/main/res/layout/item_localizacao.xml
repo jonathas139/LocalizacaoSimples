@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardElevation="4dp"
-    app:cardCornerRadius="12dp">
+    app:cardCornerRadius="12dp"
+    app:cardBackgroundColor="?attr/colorSurface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
                 android:text="Nome do Usuário"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#333333"/>
+                android:textColor="?attr/colorOnBackground"/>
 
             <TextView
                 android:id="@+id/youBadgeTextView"
@@ -37,8 +38,8 @@
                 android:layout_height="wrap_content"
                 android:text="Você"
                 android:textSize="12sp"
-                android:textColor="#FFFFFF"
-                android:background="#4CAF50"
+                android:textColor="?attr/colorOnPrimary"
+                android:background="?attr/colorPrimary"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingTop="4dp"
@@ -54,7 +55,8 @@
             android:layout_height="wrap_content"
             android:text="📍 Lat: -22.708920, Lon: -47.636719"
             android:textSize="14sp"
-            android:textColor="#666666"
+            android:textColor="?attr/colorOnBackground"
+            android:alpha="0.7"
             android:layout_marginBottom="8dp"/>
 
         <!-- Timestamp -->
@@ -64,7 +66,8 @@
             android:layout_height="wrap_content"
             android:text="⏱️ Atualizado há 5 minutos"
             android:textSize="13sp"
-            android:textColor="#999999"
+            android:textColor="?attr/colorOnBackground"
+            android:alpha="0.5"
             android:layout_marginBottom="12dp"/>
 
         <!-- Botão Maps -->
@@ -72,9 +75,9 @@
             android:id="@+id/openMapsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🗺️ Abrir no Google Maps"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#2196F3"
+            android:text="Abrir no Google Maps"
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
             android:padding="12dp"/>
 
     </LinearLayout>

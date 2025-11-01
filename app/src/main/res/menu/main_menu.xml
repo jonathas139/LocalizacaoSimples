@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
         android:id="@+id/action_locations"
         android:title="Localizações"
@@ -20,7 +21,8 @@
         android:id="@+id/action_logout"
         android:title="Sair"
         android:icon="@android:drawable/ic_lock_power_off"
-        app:showAsAction="never"
+        app:showAsAction="always"
         android:orderInCategory="3"/>
+
 
 </menu>

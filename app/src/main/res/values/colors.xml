@@ -6,4 +6,5 @@
     <color name="colorBackground">#F1F8E9</color> <!-- Fundo claro -->
     <color name="colorOnPrimary">#FFFFFF</color> <!-- Texto sobre verde -->
     <color name="colorOnBackground">#212121</color> <!-- Texto sobre fundo claro -->
+    <color name="colorError">#F44336</color>
 </resources>

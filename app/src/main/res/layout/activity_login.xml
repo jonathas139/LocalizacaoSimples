@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="24dp"
-    android:background="#F5F5F5">
+    android:background="?attr/colorSurface">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +14,7 @@
         android:text="Segurança Parental"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="#2196F3"
+        android:textColor="?attr/colorPrimary"
         android:layout_marginBottom="48dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -21,13 +22,15 @@
         android:layout_height="wrap_content"
         android:hint="Email"
         android:layout_marginBottom="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:hintTextColor="?attr/colorPrimary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:textColor="?attr/colorOnBackground"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -35,13 +38,15 @@
         android:layout_height="wrap_content"
         android:hint="Senha"
         android:layout_marginBottom="24dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:hintTextColor="?attr/colorPrimary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/senhaEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:textColor="?attr/colorOnBackground"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -50,14 +55,16 @@
         android:layout_height="56dp"
         android:text="Entrar"
         android:textSize="16sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:textColor="?attr/colorOnPrimary"/>
 
     <TextView
         android:id="@+id/txtCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Não tem conta? Cadastre-se"
-        android:textColor="#2196F3"
+        android:textColor="?attr/colorPrimary"
         android:textSize="14sp"
         android:padding="8dp"/>
 
@@ -66,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:indeterminateTint="?attr/colorPrimary"/>
 
 </LinearLayout>

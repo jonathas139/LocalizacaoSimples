@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         locationTextView = findViewById(R.id.locationTextView)
 
         loadUserData()
-        supportActionBar?.title = "📍 Rastreamento - $userName"
+        supportActionBar?.title = "$userName"
 
         checkPermissionAndStart()
     }
@@ -196,8 +196,8 @@ class MainActivity : AppCompatActivity() {
         val currentTime = dateFormat.format(Date())
 
         locationTextView.text = """
-            👤 Usuário: $userName
             
+          
             📍 Localização Atual
             
             Latitude: ${"%.6f".format(location.latitude)}
@@ -205,6 +205,7 @@ class MainActivity : AppCompatActivity() {
             Precisão: ${"%.1f".format(location.accuracy)}m
             
             ⏱️ Atualizado: $currentTime
+            
             ✅ Enviando para seu histórico...
         """.trimIndent()
     }
