@@ -29,15 +29,17 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationTextView: TextView
-    private val database = FirebaseDatabase.getInstance().getReference("localizacoes")
+    private val database = FirebaseDatabase.getInstance()
+    private val historicRef = database.getReference("localizacoes")
+    private val currentLocationRef = database.getReference("localizacao_atual")
 
     private var userId: String? = null
     private var userName: String? = null
 
     private val locationRequest = LocationRequest.Builder(
-        Priority.PRIORITY_HIGH_ACCURACY, 10000L // Atualiza a cada 10 segundos
+        Priority.PRIORITY_HIGH_ACCURACY, 10000L
     ).apply {
-        setMinUpdateIntervalMillis(5000L) // Não atualiza mais rápido que 5s
+        setMinUpdateIntervalMillis(5000L)
         setMaxUpdateDelayMillis(15000L)
     }.build()
 
@@ -71,13 +73,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         locationTextView = findViewById(R.id.locationTextView)
 
-        // Carregar dados do usuário logado
         loadUserData()
-
-        // Configurar ActionBar com nome do usuário
         supportActionBar?.title = "📍 Rastreamento - $userName"
 
         checkPermissionAndStart()
@@ -88,7 +90,6 @@ class MainActivity : AppCompatActivity() {
         userId = sharedPref.getString("userId", null)
         userName = sharedPref.getString("nome", "Usuário")
 
-        // Se não estiver logado, volta para o login
         if (userId == null) {
             Toast.makeText(this, "Faça login novamente", Toast.LENGTH_SHORT).show()
             goToLogin()
@@ -102,6 +103,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_locations -> {
+                startActivity(Intent(this, SharedLocationsActivity::class.java))
+                true
+            }
+            R.id.action_share -> {
+                startActivity(Intent(this, ManageSharingActivity::class.java))
+                true
+            }
             R.id.action_logout -> {
                 logout()
                 true
@@ -111,11 +120,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        // Limpar SharedPreferences
         val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         sharedPref.edit().clear().apply()
 
-        // Parar rastreamento
         fusedLocationClient.removeLocationUpdates(locationCallback)
 
         Toast.makeText(this, "Logout realizado", Toast.LENGTH_SHORT).show()
@@ -203,22 +210,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendLocationToFirebase(location: Location) {
-        // Salvar na pasta do usuário: localizacoes/userId/...
-        val userLocationRef = database.child(userId!!)
+        val timestamp = System.currentTimeMillis()
+        val dateTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
         val dados = mapOf(
             "latitude" to location.latitude,
             "longitude" to location.longitude,
             "accuracy" to location.accuracy,
-            "timestamp" to System.currentTimeMillis(),
-            "dateTime" to SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
+            "timestamp" to timestamp,
+            "dateTime" to dateTime,
             "userName" to userName
         )
 
-        userLocationRef.push().setValue(dados)
-            .addOnSuccessListener {
-                // Sucesso silencioso
-            }
+        // Salvar no histórico
+        historicRef.child(userId!!).push().setValue(dados)
+
+        // Atualizar localização atual (sobrescreve a anterior)
+        currentLocationRef.child(userId!!).setValue(dados)
             .addOnFailureListener { e ->
                 runOnUiThread {
                     locationTextView.append("\n\n❌ Erro ao enviar: ${e.message}")
@@ -234,14 +242,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        // Remove atualizações quando o app não está visível (economiza bateria)
-        // Remova este bloco se quiser rastreamento em background
         fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 
     override fun onResume() {
         super.onResume()
-        // Retoma atualizações quando o app volta ao primeiro plano
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED

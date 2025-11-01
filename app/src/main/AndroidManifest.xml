@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissões necessárias -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -35,6 +36,20 @@
         <!-- Tela Principal (rastreamento) -->
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- Tela de Gerenciar Compartilhamento -->
+        <activity
+            android:name=".ManageSharingActivity"
+            android:label="Gerenciar Compartilhamento"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+
+        <!-- Tela de Visualizar Localizações -->
+        <activity
+            android:name=".SharedLocationsActivity"
+            android:label="Localizações Compartilhadas"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
 
     </application>
