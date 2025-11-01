@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="📍 LocalizaApp"
+        android:text="Segurança Parental"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="#2196F3"

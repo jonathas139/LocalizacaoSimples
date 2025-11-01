@@ -1,10 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- Tema base -->
     <style name="Base.Theme.LocalizacaoSimples" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Cores principais -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSurface">@color/colorBackground</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Cor da Toolbar -->
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
+        <!-- Estilo de texto -->
+        <item name="android:textColor">@color/colorOnPrimary</item>
     </style>
 
+    <!-- Tema da aplicação -->
     <style name="Theme.LocalizacaoSimples" parent="Base.Theme.LocalizacaoSimples" />
-
 </resources>

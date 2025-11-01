@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#2E7D32</color> <!-- Verde principal -->
+    <color name="colorPrimaryDark">#1B5E20</color> <!-- Verde escuro -->
+    <color name="colorAccent">#A5D6A7</color> <!-- Verde limão suave -->
+    <color name="colorBackground">#F1F8E9</color> <!-- Fundo claro -->
+    <color name="colorOnPrimary">#FFFFFF</color> <!-- Texto sobre verde -->
+    <color name="colorOnBackground">#212121</color> <!-- Texto sobre fundo claro -->
 </resources>
